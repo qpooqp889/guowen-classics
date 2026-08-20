@@ -50,3 +50,10 @@
 - 〈與元微之書〉https://cerclearning.tp.edu.tw/classical/datapage/182
 
 網站實作原則：五篇以學習節選段落呈現，段落解釋以國中程度白話改寫；特殊字音只標示課文語境中值得注意的讀法、通假字或古今義差異，並提供瀏覽器朗讀按鈕。使用者可在各篇與索引結果中加入收藏，收藏資料存在瀏覽器 localStorage，不需帳號即可保留。
+
+
+## 唐代五篇作者與背景補充核對
+
+作者簡介與導讀優先採用國語文學科中心頁面：韓愈作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/148/author/127）確認韓愈生卒年、字退之、古文運動與《昌黎先生集》；柳宗元作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/149/author/139）確認生卒年、字子厚、河東／柳州稱號、永州八記與動亂時代背景；杜光庭作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/150/author/128）確認生卒年、道士身分、入蜀事王建與《錄異記》等；〈諫太宗十思疏〉導讀（https://cerclearning.tp.edu.tw/classical/datapage/147/guide）確認「疏」的文體、居安思危、戒奢以儉、十思與知人善任主旨。
+
+白居易〈與元微之書〉沿用古典名篇原文頁（https://cerclearning.tp.edu.tw/classical/datapage/182）與教育部國語文學科中心作者／導讀系統作為來源註記；網站背景文字以國中程度介紹中唐文學、白居易與元稹的友誼、書信中山水自娛與晚年仍可自我勉勵的主題，避免加入未經來源核對的細節。
