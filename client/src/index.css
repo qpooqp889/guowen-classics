@@ -143,3 +143,30 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 .icon-text-button:hover:not(:disabled) { color: #b64a35; }
 .icon-text-button:disabled { cursor: not-allowed; opacity: .35; }
 @media (max-width: 639px) { .timeline-map-grid, .study-records { grid-template-columns: 1fr; } .timeline-item { grid-template-columns: 60px 1fr; } .timeline-item::before { left: 67px; } .record-row { grid-template-columns: 72px 1fr auto; font-size: .62rem; } }
+
+/* 進度與互動地圖：用紙頁上的墨線、朱筆與淡色地形表達學習狀態。 */
+.progress-panel { border: 1px solid rgba(32,39,35,.13); background: rgba(251,247,237,.82); padding: 22px; }
+.progress-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.progress-total { font-family: "Noto Serif TC", serif; font-size: 2.5rem; font-weight: 800; color: #b64a35; }
+.progress-row { display: grid; grid-template-columns: 76px 1fr 52px; align-items: center; gap: 12px; margin-top: 12px; font-family: "Noto Sans TC", sans-serif; font-size: .7rem; color: rgba(32,39,35,.7); }
+.progress-row b { text-align: right; font-size: .65rem; color: #3e6657; }
+.progress-track { height: 8px; overflow: hidden; background: rgba(62,102,87,.12); }
+.progress-track i { display: block; height: 100%; background: #3e6657; transition: width .3s ease-out; }
+.record-filter { border: 1px solid rgba(32,39,35,.18); background: #fbf7ed; padding: 6px 22px 6px 8px; font-family: "Noto Sans TC", sans-serif; font-size: .65rem; color: rgba(32,39,35,.72); }
+.map-controls { display: flex; gap: 4px; }
+.map-controls button { min-width: 28px; border: 1px solid rgba(62,102,87,.35); background: #fbf7ed; padding: 4px 7px; font-family: "Noto Sans TC", sans-serif; font-size: .65rem; color: #3e6657; }
+.map-controls button:hover { border-color: #b64a35; color: #b64a35; }
+.interactive-map { position: relative; height: 230px; overflow: hidden; border: 1px solid rgba(32,39,35,.12); background: #e7eee7; }
+.map-grid-lines { position: absolute; inset: 0; opacity: .32; background-image: linear-gradient(rgba(62,102,87,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(62,102,87,.18) 1px, transparent 1px); background-size: 28px 28px; }
+.map-landform { position: absolute; border: 1px solid rgba(62,102,87,.12); background: rgba(196,214,198,.45); filter: blur(1px); }
+.map-landform-a { left: -5%; top: 25%; width: 54%; height: 42%; border-radius: 58% 42% 60% 40%; transform: rotate(-12deg); }
+.map-landform-b { right: -10%; bottom: -8%; width: 62%; height: 47%; border-radius: 48% 52% 42% 58%; transform: rotate(10deg); }
+.map-canvas { position: absolute; inset: 0; transform-origin: center; transition: transform .2s ease-out; }
+.map-pin { position: absolute; display: grid; width: 26px; height: 26px; transform: translate(-50%, -50%); place-items: center; border: 2px solid #fbf7ed; border-radius: 50%; background: #b64a35; box-shadow: 0 2px 7px rgba(32,39,35,.2); color: #fff; transition: transform .18s ease-out, background .18s ease-out; }
+.map-pin:hover, .map-pin.is-selected { z-index: 2; transform: translate(-50%, -50%) scale(1.18); background: #3e6657; }
+.map-pin span { font-family: "Noto Sans TC", sans-serif; font-size: .65rem; font-weight: 800; }
+.map-legend { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.map-legend div { display: flex; flex-direction: column; gap: 2px; text-align: right; }
+.map-legend strong { font-family: "Noto Serif TC", serif; font-size: .9rem; }
+.map-legend span:last-child { font-family: "Noto Sans TC", sans-serif; font-size: .65rem; color: rgba(32,39,35,.58); }
+@media (max-width: 639px) { .progress-row { grid-template-columns: 62px 1fr 44px; gap: 8px; font-size: .62rem; } .progress-panel { padding: 16px; } .interactive-map { height: 190px; } .map-legend { align-items: flex-start; } .record-filter { max-width: 100%; } }
