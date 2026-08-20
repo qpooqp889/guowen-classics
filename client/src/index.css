@@ -190,3 +190,18 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 .compare-label.is-translation { border-left-color: var(--red); color: var(--red); }
 .empty-compare { border: 1px dashed color-mix(in oklab, var(--ink) 22%, transparent); padding: 3rem 1.5rem; text-align: center; }
 @media (max-width: 767px) { .content-index { border-right: 0; border-bottom: 1px solid color-mix(in oklab, var(--ink) 12%, transparent); padding: 0 0 1rem; } .compare-row { grid-template-columns: 1fr; gap: 1rem; } .compare-page { padding: 1.2rem; } .status-chip { max-width: 100%; } }
+
+/* 段落字音與校對互動：硃砂代表提醒與待校對；原文懸停後以淡竹青紙色提示對應語譯。 */
+.compare-row { transition: background .2s ease, box-shadow .2s ease; }
+.compare-row.is-linked { background: color-mix(in oklab, var(--mist) 55%, transparent); box-shadow: inset 3px 0 0 var(--moss); padding-left: 1rem; }
+.translation-highlight { background: color-mix(in oklab, var(--mist) 90%, white); box-shadow: 0 4px 16px rgb(57 77 58 / 8%); padding: .75rem 1rem; transition: background .2s ease, box-shadow .2s ease; }
+.compare-label.is-note { border-left-color: var(--red); color: var(--red); }
+.inline-note { display: inline-grid; grid-template-columns: auto auto; gap: 0 .45rem; border: 1px solid color-mix(in oklab, var(--red) 25%, transparent); background: color-mix(in oklab, white 58%, var(--paper)); padding: .45rem .55rem; text-align: left; transition: border-color .18s ease, transform .18s ease; }
+.inline-note:hover { border-color: var(--red); transform: translateY(-1px); }
+.inline-note b { font-family: var(--font-serif); font-size: .92rem; }
+.inline-note span { font-family: var(--font-sans); font-size: .68rem; color: var(--red); }
+.inline-note small { grid-column: 1 / -1; font-family: var(--font-sans); font-size: .62rem; line-height: 1.4; color: color-mix(in oklab, var(--ink) 55%, transparent); }
+.review-box { border-top: 1px solid color-mix(in oklab, var(--ink) 15%, transparent); padding-top: 1.25rem; }
+.review-textarea { width: 100%; min-height: 6.5rem; resize: vertical; border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent); background: color-mix(in oklab, white 65%, var(--paper)); padding: .8rem; font-family: var(--font-serif); font-size: .95rem; line-height: 1.8; color: var(--ink); outline: none; }
+.review-textarea:focus { border-color: var(--moss); box-shadow: 0 0 0 3px color-mix(in oklab, var(--moss) 12%, transparent); }
+@media (max-width: 767px) { .compare-row.is-linked { padding-left: .75rem; } .translation-highlight { padding: .65rem .75rem; } }
