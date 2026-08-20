@@ -111,6 +111,7 @@ export default function Home() {
   const [hoveredContentSection, setHoveredContentSection] = useState<number | null>(null);
   const [reviewNote, setReviewNote] = useState("");
   const [reviewSaved, setReviewSaved] = useState(false);
+  const [fontScale, setFontScale] = useState(1);
   const active = useMemo(() => classics.find((item) => item.id === activeId) ?? classics[0], [activeId]);
   const section = active.sections[activeSection] ?? active.sections[0];
   const filteredCatalog = useMemo(() => catalog.filter((item) => {
@@ -158,7 +159,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-paper text-ink">
+    <main className="min-h-screen overflow-hidden bg-paper text-ink" style={{ fontSize: `${fontScale}em` }}>
       <header className="relative z-20 border-b border-ink/10 bg-paper/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-4 lg:px-10">
           <button className="flex items-center gap-3 text-left" onClick={() => selectClassic("peach")} aria-label="回到首頁篇章">
@@ -172,7 +173,7 @@ export default function Home() {
             <a href="#how-to-read" className="hover:text-red transition-colors">讀法提示</a>
             <a href="#sources" className="hover:text-red transition-colors">資料來源</a>
           </nav>
-          <div className="flex items-center gap-2"><button className="favorite-nav" onClick={() => setShowFavorites((value) => !value)} aria-pressed={showFavorites}><Bookmark size={16} />我的收藏 <span>{favorites.length}</span></button><button className="rounded-full p-2 text-moss hover:bg-moss/10 md:hidden" onClick={() => setShowMenu((value) => !value)} aria-label="開啟行動版選單">{showMenu ? <X size={22} /> : <Menu size={22} />}</button></div>
+          <div className="flex items-center gap-2"><div className="font-size-control" role="group" aria-label="調整字型大小"><button onClick={() => setFontScale((value) => Math.max(.9, Number((value - .05).toFixed(2))))} aria-label="縮小字型">A−</button><span>{Math.round(fontScale * 100)}%</span><button onClick={() => setFontScale((value) => Math.min(1.25, Number((value + .05).toFixed(2))))} aria-label="放大字型">A＋</button><button onClick={() => setFontScale(1)} aria-label="重設字型大小">重設</button></div><button className="favorite-nav" onClick={() => setShowFavorites((value) => !value)} aria-pressed={showFavorites}><Bookmark size={16} />我的收藏 <span>{favorites.length}</span></button><button className="rounded-full p-2 text-moss hover:bg-moss/10 md:hidden" onClick={() => setShowMenu((value) => !value)} aria-label="開啟行動版選單">{showMenu ? <X size={22} /> : <Menu size={22} />}</button></div>
         </div>
         {showMenu && <div className="border-t border-ink/10 bg-paper px-5 py-4 font-sans text-sm md:hidden"><a className="mr-5" href="#classics" onClick={() => setShowMenu(false)}>篇章閱讀</a><a className="mr-5" href="#tang" onClick={() => setShowMenu(false)}>唐代專題</a><a className="mr-5" href="#how-to-read" onClick={() => setShowMenu(false)}>讀法提示</a><a href="#sources" onClick={() => setShowMenu(false)}>資料來源</a></div>}
       </header>
