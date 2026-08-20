@@ -170,3 +170,23 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 .map-legend strong { font-family: "Noto Serif TC", serif; font-size: .9rem; }
 .map-legend span:last-child { font-family: "Noto Sans TC", sans-serif; font-size: .65rem; color: rgba(32,39,35,.58); }
 @media (max-width: 639px) { .progress-row { grid-template-columns: 62px 1fr 44px; gap: 8px; font-size: .62rem; } .progress-panel { padding: 16px; } .interactive-map { height: 190px; } .map-legend { align-items: flex-start; } .record-filter { max-width: 100%; } }
+
+/* 百篇 JSON 文白對照：延續「紙上山水・數位課本」；索引像目錄頁，內容像左右攤開的課文紙頁，硃砂只標示狀態與學習提醒。 */
+.content-index { border-right: 1px solid color-mix(in oklab, var(--ink) 12%, transparent); padding-right: 1.25rem; }
+.search-field { display: flex; align-items: center; gap: .55rem; border-bottom: 1px solid color-mix(in oklab, var(--ink) 25%, transparent); padding: .65rem .1rem; color: color-mix(in oklab, var(--ink) 50%, transparent); }
+.search-field input { width: 100%; background: transparent; border: 0; outline: 0; font-family: var(--font-sans); font-size: .78rem; color: var(--ink); }
+.filter-field, .record-filter { border: 1px solid color-mix(in oklab, var(--ink) 16%, transparent); background: var(--paper); padding: .6rem .7rem; font-family: var(--font-sans); font-size: .75rem; color: var(--ink); }
+.content-index-item { display: grid; grid-template-columns: 2.2rem 1fr; gap: .1rem .55rem; width: 100%; padding: .7rem .65rem; text-align: left; border-left: 2px solid transparent; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+.content-index-item:hover { background: color-mix(in oklab, var(--mist) 65%, transparent); transform: translateX(2px); }
+.content-index-item.is-active { background: color-mix(in oklab, var(--mist) 90%, transparent); border-left-color: var(--red); }
+.content-index-item span { grid-row: span 2; font-family: var(--font-sans); font-size: .68rem; color: color-mix(in oklab, var(--ink) 45%, transparent); }
+.content-index-item strong { font-family: var(--font-serif); font-size: .95rem; font-weight: 700; color: var(--ink); }
+.content-index-item small { font-family: var(--font-sans); font-size: .68rem; color: color-mix(in oklab, var(--ink) 48%, transparent); }
+.compare-page { background: color-mix(in oklab, white 55%, var(--paper)); padding: clamp(1.2rem, 3vw, 3rem); box-shadow: 0 12px 35px rgb(57 47 36 / 6%); }
+.status-chip { border: 1px solid color-mix(in oklab, var(--red) 45%, transparent); color: var(--red); padding: .45rem .6rem; font-family: var(--font-sans); font-size: .68rem; line-height: 1.4; }
+.status-chip.is-ready { border-color: color-mix(in oklab, var(--moss) 50%, transparent); color: var(--moss); }
+.compare-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; border-bottom: 1px solid color-mix(in oklab, var(--ink) 13%, transparent); padding: 1.5rem 0 1.8rem; }
+.compare-label { display: inline-block; border-left: 2px solid var(--ink); padding-left: .55rem; font-family: var(--font-sans); font-size: .68rem; font-weight: 700; letter-spacing: .12em; color: color-mix(in oklab, var(--ink) 65%, transparent); }
+.compare-label.is-translation { border-left-color: var(--red); color: var(--red); }
+.empty-compare { border: 1px dashed color-mix(in oklab, var(--ink) 22%, transparent); padding: 3rem 1.5rem; text-align: center; }
+@media (max-width: 767px) { .content-index { border-right: 0; border-bottom: 1px solid color-mix(in oklab, var(--ink) 12%, transparent); padding: 0 0 1rem; } .compare-row { grid-template-columns: 1fr; gap: 1rem; } .compare-page { padding: 1.2rem; } .status-chip { max-width: 100%; } }

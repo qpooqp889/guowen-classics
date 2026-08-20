@@ -57,3 +57,9 @@
 作者簡介與導讀優先採用國語文學科中心頁面：韓愈作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/148/author/127）確認韓愈生卒年、字退之、古文運動與《昌黎先生集》；柳宗元作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/149/author/139）確認生卒年、字子厚、河東／柳州稱號、永州八記與動亂時代背景；杜光庭作者簡介（https://cerclearning.tp.edu.tw/classical/datapage/150/author/128）確認生卒年、道士身分、入蜀事王建與《錄異記》等；〈諫太宗十思疏〉導讀（https://cerclearning.tp.edu.tw/classical/datapage/147/guide）確認「疏」的文體、居安思危、戒奢以儉、十思與知人善任主旨。
 
 白居易〈與元微之書〉沿用古典名篇原文頁（https://cerclearning.tp.edu.tw/classical/datapage/182）與教育部國語文學科中心作者／導讀系統作為來源註記；網站背景文字以國中程度介紹中唐文學、白居易與元稹的友誼、書信中山水自娛與晚年仍可自我勉勵的主題，避免加入未經來源核對的細節。
+
+## 百篇 JSON 文白資料庫來源核對（2026-08-20）
+
+使用者指定來源頁：https://cerclearning.tp.edu.tw/classical/datapage/134。此頁為〈燭之武退秦師〉，頁面列作者左丘明、朝代先秦，並提供原文段落與對應段落語譯；原文與語譯所在頁面結構可由 `div.paragraph1`、`div.paragraph2` 等容器擷取。古典名篇列表來源為 https://cerclearning.tp.edu.tw/classical。
+
+本次資料庫的 65 篇來源頁原文已逐頁擷取並核對，白話語譯由 AI 依原文重新撰寫，不直接複製來源頁語譯；另外 35 篇國中優先篇目先納入統一 JSON 架構，若缺乏可直接核對的完整來源，會標示「AI 草稿待來源校對」或「待 AI 語譯與來源校對」，不誤標為已核對教材。
