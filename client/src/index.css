@@ -88,3 +88,16 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 .empty-catalog { border: 1px dashed rgba(182,74,53,.45); padding: 32px; text-align: center; font-family: "Noto Serif TC", serif; color: rgba(32,39,35,.6); }
 @media (max-width: 1023px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 639px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-item { min-height: 205px; padding: 14px; } .catalog-item h3 { font-size: 1.05rem; } }
+
+/* 唐代專題與我的收藏：收藏是書頁標記，不使用一般 SaaS 卡片語言。 */
+.favorite-nav, .bookmark-button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(62,102,87,.28); background: rgba(251,247,237,.8); padding: 8px 11px; font-family: "Noto Sans TC", sans-serif; font-size: .72rem; font-weight: 700; color: #3e6657; transition: 180ms ease-out; }
+.favorite-nav:hover, .bookmark-button:hover, .bookmark-button.is-active { border-color: #b64a35; color: #b64a35; background: rgba(182,74,53,.06); }
+.favorite-nav span { min-width: 18px; border-left: 1px solid currentColor; padding-left: 6px; text-align: center; }
+.favorite-card { position: relative; display: flex; min-height: 108px; justify-content: space-between; gap: 10px; border: 1px solid rgba(32,39,35,.13); background: rgba(251,247,237,.78); padding: 14px; transition: 180ms ease-out; }
+.favorite-card:hover { border-color: rgba(182,74,53,.45); transform: translateY(-2px); }
+.favorite-remove { align-self: flex-start; color: #b64a35; opacity: .45; transition: 180ms ease-out; }
+.favorite-remove:hover { opacity: 1; }
+.favorite-drawer { animation: drawer-in 180ms cubic-bezier(.23,1,.32,1); }
+@keyframes drawer-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 639px) { .favorite-nav { padding: 7px 9px; font-size: .68rem; } .favorite-nav span { display: none; } .bookmark-button { width: 100%; justify-content: center; } }
+@media (prefers-reduced-motion: reduce) { .favorite-drawer { animation: none; } }

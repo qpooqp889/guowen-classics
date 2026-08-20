@@ -36,3 +36,17 @@
 
 6. 搜尋確認同站〈醉翁亭記〉頁面：https://cerclearning.tp.edu.tw/classical/datapage/152
    - 搜尋結果顯示原文第1段起首為「環滁皆山也。其西南諸峰，林壑尤美……」，後續將以同站內容作為文章與語譯核對來源。
+
+
+## 唐代五篇擴充核對
+
+本次選擇五篇「隋唐五代」篇目：〈師說〉韓愈、〈始得西山宴遊記〉柳宗元、〈虯髯客傳〉杜光庭、〈諫太宗十思疏〉魏徵、〈與元微之書〉白居易。共同來源為臺北市立第一女子高級中學承辦、教育部國民及學前教育署普通型高級中等學校國語文學科中心之古典名篇頁面；各頁均有原文、語譯與教育部國語辭典音義提示功能。
+
+來源：
+- 〈師說〉https://cerclearning.tp.edu.tw/classical/datapage/148
+- 〈始得西山宴遊記〉https://cerclearning.tp.edu.tw/classical/datapage/149
+- 〈虯髯客傳〉https://cerclearning.tp.edu.tw/classical/datapage/150
+- 〈諫太宗十思疏〉https://cerclearning.tp.edu.tw/classical/datapage/147
+- 〈與元微之書〉https://cerclearning.tp.edu.tw/classical/datapage/182
+
+網站實作原則：五篇以學習節選段落呈現，段落解釋以國中程度白話改寫；特殊字音只標示課文語境中值得注意的讀法、通假字或古今義差異，並提供瀏覽器朗讀按鈕。使用者可在各篇與索引結果中加入收藏，收藏資料存在瀏覽器 localStorage，不需帳號即可保留。
