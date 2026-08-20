@@ -112,3 +112,12 @@
 - [x] 將新篇替換進百篇 JSON，完成 100 篇皆有可用內容
 - [x] 驗證唯一篇名、原文、語譯、狀態與文白對照介面
 - [x] 完成建置、截圖檢查並建立新版 checkpoint
+
+## README、GitHub 與 GitHub Pages
+
+- [ ] 撰寫繁體中文 README.md，說明功能、資料來源、使用方式與授權
+- [ ] 檢查正式建置與 GitHub Pages 所需的前端路徑設定
+- [ ] 建立公開 GitHub 儲存庫並上傳專案程式碼
+- [ ] 設定 GitHub Actions 建置與 GitHub Pages 發布流程
+- [ ] 驗證 GitHub Pages 公開網址與主要功能
+- [ ] 記錄 GitHub 儲存庫與 Pages 網址

@@ -206,6 +206,8 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
+  // GitHub Pages 使用專案子路徑；本機開發仍維持根路徑。
+  base: process.env.GITHUB_ACTIONS ? "/guowen-classics/" : "/",
   plugins,
   resolve: {
     alias: {
