@@ -93,7 +93,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 .favorite-nav, .bookmark-button { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(62,102,87,.28); background: rgba(251,247,237,.8); padding: 8px 11px; font-family: "Noto Sans TC", sans-serif; font-size: .72rem; font-weight: 700; color: #3e6657; transition: 180ms ease-out; }
 .font-size-control { display: inline-flex; align-items: center; gap: 2px; border: 1px solid rgba(62,102,87,.24); background: rgba(251,247,237,.82); padding: 3px; font-family: "Noto Sans TC", sans-serif; font-size: .65rem; font-weight: 700; color: #3e6657; }
 .font-size-control button { border: 0; background: transparent; padding: 4px 6px; color: inherit; font: inherit; }
-.font-size-control button:hover { background: rgba(62,102,87,.1); }
+.font-size-control button:hover, .font-size-control button.is-active { background: #3e6657; color: #fbf7ed; }
 .font-size-control span { min-width: 35px; text-align: center; color: rgba(32,39,35,.55); }
 .favorite-nav:hover, .bookmark-button:hover, .bookmark-button.is-active { border-color: #b64a35; color: #b64a35; background: rgba(182,74,53,.06); }
 .favorite-nav span { min-width: 18px; border-left: 1px solid currentColor; padding-left: 6px; text-align: center; }
