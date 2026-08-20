@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { BookOpen, ChevronRight, Headphones, Info, Menu, Volume2, X } from "lucide-react";
+import { BookOpen, ChevronRight, Headphones, Info, Menu, Search, SlidersHorizontal, Volume2, X } from "lucide-react";
+import { catalog, categories, dynasties } from "@/lib/catalog";
 
 type Note = { word: string; zhuyin: string; meaning: string; hint?: string };
 type Section = { label: string; original: string; explanation: string; notes: Note[] };
@@ -79,8 +80,18 @@ export default function Home() {
   const [activeId, setActiveId] = useState("peach");
   const [activeSection, setActiveSection] = useState(0);
   const [showMenu, setShowMenu] = useState(false);
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("全部分類");
+  const [dynasty, setDynasty] = useState("全部朝代");
+  const [coreOnly, setCoreOnly] = useState(false);
+  const [showAllResults, setShowAllResults] = useState(false);
   const active = useMemo(() => classics.find((item) => item.id === activeId) ?? classics[0], [activeId]);
   const section = active.sections[activeSection] ?? active.sections[0];
+  const filteredCatalog = useMemo(() => catalog.filter((item) => {
+    const haystack = `${item.title} ${item.author} ${item.dynasty} ${item.genre} ${item.category}`;
+    return (!query.trim() || haystack.includes(query.trim())) && (category === "全部分類" || item.category === category) && (dynasty === "全部朝代" || item.dynasty === dynasty) && (!coreOnly || item.core);
+  }), [query, category, dynasty, coreOnly]);
+  const visibleCatalog = showAllResults ? filteredCatalog : filteredCatalog.slice(0, 12);
 
   const selectClassic = (id: string) => {
     setActiveId(id);
@@ -99,6 +110,7 @@ export default function Home() {
           </button>
           <nav className="hidden items-center gap-8 font-sans text-sm text-ink/65 md:flex" aria-label="主要導覽">
             <a href="#classics" className="hover:text-red transition-colors">篇章閱讀</a>
+            <a href="#catalog" className="hover:text-red transition-colors">百篇檢索</a>
             <a href="#how-to-read" className="hover:text-red transition-colors">讀法提示</a>
             <a href="#sources" className="hover:text-red transition-colors">資料來源</a>
           </nav>
@@ -131,6 +143,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section id="catalog" className="border-y border-ink/10 bg-paper"><div className="mx-auto max-w-[1440px] px-5 py-16 lg:px-16 lg:py-24"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="section-kicker">百篇索引・可檢索</p><h2 className="mt-3 font-serif text-4xl font-bold">找到你的下一篇古文</h2><p className="mt-3 max-w-xl font-serif text-base leading-7 text-ink/60">依篇名、作者、朝代或學習主題尋找。標示「已整理」的篇目已連結至可靠教材頁；「索引」篇目先提供篇名資料，後續再逐篇補上完整講解。</p></div><div className="flex items-center gap-2 font-sans text-xs text-ink/45"><BookOpen size={16} className="text-moss" />共 {catalog.length} 篇</div></div><div className="mt-10 grid gap-3 lg:grid-cols-[1.4fr_1fr_1fr_auto]"><label className="search-field lg:col-span-1"><Search size={17} /><input value={query} onChange={(event) => { setQuery(event.target.value); setShowAllResults(false); }} placeholder="搜尋篇名、作者或關鍵字" aria-label="搜尋篇名、作者或關鍵字" /></label><select className="filter-field" value={category} onChange={(event) => { setCategory(event.target.value); setShowAllResults(false); }} aria-label="依分類篩選">{categories.map((item) => <option key={item}>{item}</option>)}</select><select className="filter-field" value={dynasty} onChange={(event) => { setDynasty(event.target.value); setShowAllResults(false); }} aria-label="依朝代篩選">{dynasties.map((item) => <option key={item}>{item}</option>)}</select><button className={`core-toggle ${coreOnly ? "is-active" : ""}`} onClick={() => { setCoreOnly((value) => !value); setShowAllResults(false); }}><SlidersHorizontal size={15} />只看課綱</button></div><div className="mt-5 flex flex-wrap items-center justify-between gap-3"><p className="font-sans text-xs text-ink/50">找到 <span className="font-bold text-red">{filteredCatalog.length}</span> 篇・目前顯示 {Math.min(visibleCatalog.length, filteredCatalog.length)} 篇</p>{(query || category !== "全部分類" || dynasty !== "全部朝代" || coreOnly) && <button className="font-sans text-xs font-bold text-moss underline underline-offset-4" onClick={() => { setQuery(""); setCategory("全部分類"); setDynasty("全部朝代"); setCoreOnly(false); setShowAllResults(false); }}>清除篩選</button>}</div><div className="catalog-grid mt-5">{visibleCatalog.map((item) => <article key={`${item.no}-${item.title}`} className="catalog-item"><div className="flex items-start justify-between gap-3"><span className="font-sans text-[11px] tracking-[.18em] text-red">{String(item.no).padStart(3, "0")}</span><span className={`status-chip ${item.status === "已整理" ? "is-ready" : ""}`}>{item.status}</span></div><h3 className="mt-4 font-serif text-xl font-bold">{item.title}</h3><p className="mt-2 font-sans text-xs text-ink/55">{item.author}・{item.dynasty}</p><div className="mt-4 flex flex-wrap gap-2 font-sans text-[10px] text-ink/55"><span className="tag-chip">{item.category}</span><span className="tag-chip">{item.genre}</span></div><div className="mt-5">{item.source ? <a className="catalog-link" href={item.source} target="_blank" rel="noreferrer">閱讀來源頁 <ChevronRight size={13} /></a> : <span className="font-sans text-[11px] text-ink/40">完整內容校對中</span>}</div></article>)}</div>{filteredCatalog.length === 0 && <div className="empty-catalog mt-5">找不到相符篇目。試試「桃花」「蘇軾」或選擇其他分類。</div>}{filteredCatalog.length > 12 && <button className="mx-auto mt-10 flex items-center gap-2 border-b border-moss px-2 pb-2 font-sans text-sm font-bold text-moss hover:border-red hover:text-red" onClick={() => setShowAllResults((value) => !value)}>{showAllResults ? "收合篇目" : `顯示全部 ${filteredCatalog.length} 篇`}<ChevronRight size={15} className={showAllResults ? "-rotate-90" : "rotate-90"} /></button>}</div></section>
 
       <section id="how-to-read" className="border-y border-ink/10 bg-mist"><div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 lg:grid-cols-[0.8fr_1.2fr] lg:px-16 lg:py-20"><div><p className="section-kicker">讀法小札</p><h2 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">文言文的字音，<br /><span className="text-moss">要跟著語境走。</span></h2></div><div className="grid gap-6 sm:grid-cols-3"><div className="tip-card"><span className="tip-index">一</span><h3>先看上下文</h3><p>同一個字在不同句子裡，可能擔任不同角色，不能只看現代常用音。</p></div><div className="tip-card"><span className="tip-index">二</span><h3>注意通假字</h3><p>例如「屬予」的屬通「囑」，讀作ㄓㄨˇ，是課文裡值得記住的異讀。</p></div><div className="tip-card"><span className="tip-index">三</span><h3>聽讀再開口</h3><p>先按喇叭聽一遍，再自己朗讀，讓聲音幫助你抓住句子的節奏。</p></div></div></div></section>
 

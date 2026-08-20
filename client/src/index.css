@@ -67,3 +67,24 @@ button:focus-visible, a:focus-visible { outline: 2px solid #b64a35; outline-offs
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 @media (max-width: 767px) { .hero-wash { background: linear-gradient(90deg, rgba(244,238,223,.96), rgba(244,238,223,.70)); } .paper-page { box-shadow: 0 12px 35px rgba(34,44,38,.06); } .annotation-rail { border-left: 0; border-top: 1px solid rgba(32,39,35,.14); padding: 24px 0 0; } }
+
+/* 百篇檢索：讓資料瀏覽像課本目錄，而不是後台表格。 */
+.search-field, .filter-field, .core-toggle { display: flex; min-height: 45px; align-items: center; border: 1px solid rgba(32,39,35,.18); background: rgba(251,247,237,.72); padding: 0 13px; font-family: "Noto Sans TC", sans-serif; font-size: .78rem; color: #202723; }
+.search-field { gap: 9px; color: #3e6657; }
+.search-field input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; font-family: inherit; color: #202723; }
+.search-field input::placeholder { color: rgba(32,39,35,.42); }
+.filter-field { width: 100%; outline: 0; }
+.filter-field:focus, .search-field:focus-within { border-color: #3e6657; box-shadow: 0 0 0 2px rgba(62,102,87,.1); }
+.core-toggle { justify-content: center; gap: 7px; white-space: nowrap; color: rgba(32,39,35,.62); transition: 180ms ease-out; }
+.core-toggle:hover, .core-toggle.is-active { border-color: #b64a35; color: #b64a35; background: rgba(182,74,53,.06); }
+.catalog-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; border-top: 1px solid rgba(32,39,35,.14); border-left: 1px solid rgba(32,39,35,.14); background: rgba(32,39,35,.14); }
+.catalog-item { min-height: 220px; background: rgba(251,247,237,.7); padding: 18px; transition: 180ms ease-out; }
+.catalog-item:hover { background: #fbf7ed; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(32,39,35,.08); position: relative; z-index: 1; }
+.status-chip, .tag-chip { display: inline-flex; align-items: center; border: 1px solid rgba(32,39,35,.14); padding: 3px 6px; font-family: "Noto Sans TC", sans-serif; font-size: .62rem; color: rgba(32,39,35,.5); }
+.status-chip.is-ready { border-color: rgba(62,102,87,.35); color: #3e6657; }
+.tag-chip { border-color: transparent; background: rgba(62,102,87,.08); }
+.catalog-link { display: inline-flex; align-items: center; gap: 3px; font-family: "Noto Sans TC", sans-serif; font-size: .7rem; font-weight: 700; color: #3e6657; }
+.catalog-link:hover { color: #b64a35; }
+.empty-catalog { border: 1px dashed rgba(182,74,53,.45); padding: 32px; text-align: center; font-family: "Noto Serif TC", serif; color: rgba(32,39,35,.6); }
+@media (max-width: 1023px) { .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .catalog-item { min-height: 205px; padding: 14px; } .catalog-item h3 { font-size: 1.05rem; } }
